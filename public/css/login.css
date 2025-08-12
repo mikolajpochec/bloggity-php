@@ -1,0 +1,9 @@
+.page-content {
+	justify-content: center;
+	align-items: center;
+}
+
+.menu a {
+	display: block;
+}
+

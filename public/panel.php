@@ -1,0 +1,62 @@
+<head>
+	<?php include '../common/head.php'; ?>
+</head>
+
+<div class="sidebar-layout">
+	<div class="sidebar">
+		<h1>Blog name</h1>
+<?php
+$menu = array(
+	array(
+		"category" => "Content managment",
+		"items" => array(
+			array("id" => "articles", "text" => "📰 articles"),
+			array("id" => "categories", "text" => "🧰 categories")
+		)
+	),
+	array(
+		"category" => "Appearance",
+		"items" => array(
+			array("id" => "styles", "text" => "🎨 styles"),
+			array("id" => "layout", "text" => "🔨 layout"),
+		)
+	),
+	array(
+		"category" => "Settings",
+		"items" => array(
+			array("id" => "general", "text" => "🌐 general"),
+			array("id" => "security", "text" => "🚨 security"),
+		)
+	),
+	array(
+		"category" => "Other",
+		"items" => array(
+			array("id" => "about", "text" => "ℹ️ about"),
+		)
+	)
+);
+
+$activeItem = "";
+
+if(isset($_GET["item"])) {
+	$activeItem = $_GET["item"];
+}
+
+foreach ($menu as $section) {
+	echo '<b>' . $section["category"] . '</b>';
+	foreach($section["items"] as $item) {
+		$a =  '<a id="' . $item["id"] . '" href="panel.php?item=' . $item["id"] . '"';
+		if($item["id"] === $activeItem) {
+			$a = $a . ' class = "sidebar-item-selected"';
+		}
+		$a = $a . ">" . $item["text"] . '</a>';
+		echo $a;
+	}
+}
+?>
+	</div>
+	<div>
+
+	</div>
+</div>
+
