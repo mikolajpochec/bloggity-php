@@ -1,5 +1,12 @@
+<?php
+	include '../auth/auth.php';
+	if(!tryAuth()) {
+		header("Location: /login.php");
+		die();
+	}
+?>
 <head>
-	<?php include '../common/head.php'; ?>
+	<?php include '../lib/common/head.php'; ?>
 </head>
 
 <div class="sidebar-layout">
@@ -56,7 +63,16 @@ foreach ($menu as $section) {
 ?>
 	</div>
 	<div>
-
+<?php
+if(isset($_GET["item"])) {
+	$menuFile = "../lib/panel-menu/" . $_GET["item"] . '.php';
+	if(file_exists($menuFile)) {
+		include $menuFile;
+	} else {
+		echo "<b>Warning</b>! Menu item <i>" . $_GET["item"] . "</i> not implemented.";
+	}
+}
+?>
 	</div>
 </div>
 

@@ -5,6 +5,8 @@ $is_auth = false;
 
 if(isset($_GET['logout'])) {
 	destroyAdminSession();
+	header("Location: /login.php");
+	die();
 }
 
 if (isset($_POST['password'])) {
@@ -17,15 +19,16 @@ if (isset($_POST['password'])) {
 <!DOCTYPE html>
 <html>
 <head>
-	<?php include '../common/head.php'; ?>
+	<?php include '../lib/common/head.php'; ?>
 	<link rel="stylesheet" href="/css/login.css">
 </head>
 <body>
 	<div class="page-content">
 			<?php if ($is_auth): ?>
 		<form class="vertical-form login-panel" action="/login.php?logout=true" method="POST">
-			<p>Already logged in.</p>
+			<b>Hello, administrator.</b>
 			<input name="logout" style="display:none;"/>
+			<a href="/panel.php">Administrator panel</a>
 			<input type="submit" value="Log out">
 			<?php else: ?>
 		<form class="vertical-form login-panel" action="/login.php" method="POST">
