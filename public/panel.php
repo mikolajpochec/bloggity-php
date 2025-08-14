@@ -4,9 +4,11 @@
 		header("Location: /login.php");
 		die();
 	}
+	include '../lib/db/makedb.php';
 ?>
 <head>
 	<?php include '../lib/common/head.php'; ?>
+	<link rel="stylesheet" href="/css/panel.css">
 </head>
 
 <div class="sidebar-layout">
@@ -62,7 +64,7 @@ foreach ($menu as $section) {
 }
 ?>
 	</div>
-	<div>
+	<div class="item-container">
 <?php
 if(isset($_GET["item"])) {
 	$menuFile = "../lib/panel-menu/" . $_GET["item"] . '.php';

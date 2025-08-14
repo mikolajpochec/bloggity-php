@@ -178,6 +178,9 @@ article code {
 	background-color: var(--background);
 }
 
+.sidebar-layout > div:nth-child(2) {
+	padding: var(--global-content-padding);
+}
 
 /* === END LAYOUTS === */
 
@@ -255,6 +258,14 @@ input[type=submit]:hover, button:hover {
 	-webkit-box-shadow: var(--elevated-shadow);
 	-moz-box-shadow: var(--elevated-shadow);
 	box-shadow: var(--elevated-shadow);
+}
+
+input[type="checkbox"] {
+	accent-color: var(--accent);
+}
+
+input[type="checkbox"] + label {
+	user-select: none;
 }
 
 a, a:link, a:visited, a:active {

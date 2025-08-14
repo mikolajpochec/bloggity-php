@@ -28,7 +28,7 @@ if (isset($_POST['password'])) {
 		<form class="vertical-form login-panel" action="/login.php?logout=true" method="POST">
 			<b>Hello, administrator.</b>
 			<input name="logout" style="display:none;"/>
-			<a href="/panel.php">Administrator panel</a>
+			<a href="/panel.php?item=articles">Administrator panel</a>
 			<input type="submit" value="Log out">
 			<?php else: ?>
 		<form class="vertical-form login-panel" action="/login.php" method="POST">
