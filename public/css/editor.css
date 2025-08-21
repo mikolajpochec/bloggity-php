@@ -1,0 +1,72 @@
+.editor-responsive {
+	display: flex;
+	flex-grow: 1 !important;
+	flex-direction: row;
+	gap: 1rem;
+}
+
+#tabs {
+	display: flex;
+	padding: var(--global-content-padding);
+	background-color: var(--foreground);
+	overflow: hidden;
+}
+
+.page-content > * {
+	flex-grow: 1;
+}
+
+.nav-article-title {
+	flex-grow: 1;
+	padding: 0 var(--global-content-padding);
+	overflow-x: hidden;
+	text-align: center;
+}
+
+.toolbar {
+	padding: var(--global-content-padding);
+	background-color: var(--background);
+	height: 1rem;
+	flex-grow: 0;
+}
+
+textarea {
+	min-width: 50%;
+	font-family: var(--monospace-font-family);
+	resize: none;
+}
+
+.preview {
+	width: 50%;
+	min-width: 50%;
+	display: flex;
+	direction: row;
+	justify-content: center;
+	max-height: 100%;
+	overflow-y: auto;
+}
+
+.editor-preview {
+	width: 100%;
+}
+
+/*
+ * This is obviously double the size of the max
+ * article width plus some size. 
+ * It can't be achieved with variables though in clear CSS,
+ * so it is as it is :/
+ */
+@media only screen and (min-width: 85rem) {
+	#toggle-preview-container {
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 85rem) {
+	.editor-responsive > textarea {
+		width: 100%;
+	}
+	.editor-responsive > .preview {
+		display: none;
+	}
+}

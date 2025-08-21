@@ -1,8 +1,8 @@
 <div class="column-container">
 	<div class="vertical-container">
 		<b>Filter</b>
-		<input placeholder="Search..."/>
-		<div class="row-container flex-gap">
+		<input type="text" placeholder="Search..."/>
+		<div class="row-container gaps">
 			<div class="row-container">
 			<input checked="checked" id="chck-published" type="checkbox"/>
 			<label for="chck-published">Published</label>
