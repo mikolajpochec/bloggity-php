@@ -202,6 +202,13 @@ article code {
 	min-width: var(--global-content-padding);
 }
 
+.full-vertical-center {
+	display: flex;
+	width: 100%;
+	height: 100%;
+	justify-content: center;
+}
+
 /* === END LAYOUTS === */
 
 /* === BEGIN HELPER STYLES === */

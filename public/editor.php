@@ -41,8 +41,11 @@ include '../lib/db/makedb.php';
 					</article>
 				</div>
 			</div>
-			<div>
-				2
+			<div class="full-vertical-center">
+				<div class="preview-full">
+					<article id="editor-preview-full">
+					</article>
+				</div>
 			</div>
 			<div>
 				3
