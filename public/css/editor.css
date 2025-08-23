@@ -1,15 +1,17 @@
 .editor-responsive {
 	display: flex;
-	flex-grow: 1 !important;
+	height: 0;
 	flex-direction: row;
 	gap: 1rem;
+	flex-grow: 1;
+	padding: var(--global-content-padding);
 }
 
 #tabs {
 	display: flex;
-	padding: var(--global-content-padding);
 	background-color: var(--foreground);
 	overflow: hidden;
+	height: 100%;
 }
 
 .page-content > * {
@@ -27,15 +29,14 @@
 	padding: var(--global-content-padding);
 	background-color: var(--background);
 	height: 1rem;
-	flex-grow: 0;
 }
 
 textarea {
 	min-width: 50%;
 	font-family: var(--monospace-font-family);
 	resize: none;
-	  -ms-overflow-style: none;
-	  scrollbar-width: none;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
 }
 
 textarea::-webkit-scrollbar {
@@ -44,7 +45,6 @@ textarea::-webkit-scrollbar {
 
 .preview, .preview-full{
 	display: flex;
-	direction: row;
 	justify-content: center;
 	max-height: 100%;
 	overflow-y: auto;
@@ -57,6 +57,7 @@ textarea::-webkit-scrollbar {
 .preview {
 	width: 50%;
 	min-width: 50%;
+	height: 100%;
 }
 
 .editor-preview {

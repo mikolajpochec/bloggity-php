@@ -30,15 +30,20 @@ include '../lib/db/makedb.php';
 				</label>
 			</div>
 		</div>
-		<div class="toolbar">
-			toolbar placeholder
-		</div>
 		<div id="tabs">
-			<div class="editor-responsive">
-				<textarea id="editor-field"></textarea>
-				<div class="preview">
-					<article id="editor-preview">
-					</article>
+			<div class="full-vertical-center">
+				<div class="toolbar">
+					toolbar placeholder
+				</div>
+				<div class="editor-responsive">
+					<textarea id="editor-field"></textarea>
+					<div class="preview">
+						<article id="editor-preview">
+						</article>
+					</div>
+				</div>
+				<div class="toolbar">
+					toolbar placeholder
 				</div>
 			</div>
 			<div class="full-vertical-center">
@@ -47,12 +52,11 @@ include '../lib/db/makedb.php';
 					</article>
 				</div>
 			</div>
-			<div>
-				3
+			<div class="full-vertical-center">
+				<div>
+				<input type="text" name="title" placeholder="Title">
+				</div>
 			</div>
-		</div>
-		<div class="toolbar">
-			toolbar placeholder
 		</div>
 	</div>
 	<script src="/js/editor.js" type="text/javascript"></script>
