@@ -1,11 +1,8 @@
 <?php
-$env = parse_ini_file("../.env");
-$host = $env["DB_HOST"];
-$port = $env["DB_PORT"];
-$user = $env["DB_USERNAME"];
-$pass = $env["DB_PASSWORD"];
 
-$conn = new mysqli($host . ":" . $port, $user, $pass);
+include '../lib/db/conn.php';
+$conn = makeConnection();
+
 if($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
@@ -17,7 +14,7 @@ $conn->query("
 $conn->query("USE site_content");
 $conn->query("
 	CREATE TABLE IF NOT EXISTS categories (
-		catergory_id INT AUTO_INCREMENT PRIMARY KEY,
+		category_id INT AUTO_INCREMENT PRIMARY KEY,
 		category_name VARCHAR(128)
 	)");
 
@@ -25,11 +22,11 @@ $conn->query("
 	CREATE TABLE IF NOT EXISTS articles (
 		id INT AUTO_INCREMENT PRIMARY KEY,
 		title VARCHAR(512) NOT NULL,
-		content MEDIUMTEXT NOT NULL, 
+		mdcontent MEDIUMTEXT NOT NULL, 
 		tags VARCHAR(512) NOT NULL,
-		catergory_id INT,
+		category_id INT,
 		status ENUM('public', 'draft', 'archive', 'private') NOT NULL DEFAULT 'draft',
-		FOREIGN KEY (catergory_id) REFERENCES categories(catergory_id))");
+		FOREIGN KEY (category_id) REFERENCES categories(category_id))");
 
 $conn->close();
 ?>

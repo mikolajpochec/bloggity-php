@@ -1,5 +1,5 @@
 <?php
-	include '../auth/auth.php';
+include '../auth/auth.php';
 if(!tryAuth()) {
 	header("Location: /login.php");
 	die();
