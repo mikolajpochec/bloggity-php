@@ -2,25 +2,49 @@
 let inputField = document.getElementById("editor-field");
 let preview = document.querySelector("#editor-preview");
 let previewFull = document.querySelector("#editor-preview-full");
-inputField.addEventListener('input', () => {
+
+function updatePreview() {
 	let parser = new MarkdownParser(inputField.value);
 	let html = parser.parse();
 	preview.innerHTML = html;
 	previewFull.innerHTML = html;
-}) 
+}
+inputField.addEventListener('input', updatePreview) 
+
+//Autosave
+var timeoutId;
+const AUTOSAVE_TIME_MS = 2000;
+let changesStatus = document.querySelector("#changes-status")
+
+function setAutosaveTimer() {
+	clearTimeout(timeoutId);
+	timeoutId = setTimeout(() => {
+		var xhr = new XMLHttpRequest();
+		xhr.open("POST", "/api/article/update", true);
+		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		xhr.onreadystatechange = () => {
+			if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+				const json = JSON.parse(xhr.response);
+				if(json.result === 'success') {
+					changesStatus.innerHTML = "✅ all changes saved"
+					return
+				}
+				changesStatus.innerHTML = "❌ error"
+			}
+		};
+		xhr.send(`id=${articleId}&mdcontent=${inputField.value}`);
+	}, AUTOSAVE_TIME_MS)
+}
+
+inputField.addEventListener('input', () => { 
+	changesStatus.innerHTML = "❗ unsaved changes"
+	setAutosaveTimer()
+})
 
 // Tab switch
 const tabs = document.querySelectorAll('#tabs > div');
 const radios = document.querySelectorAll('.multiple-choice-container label');
 const previewRadio = document.querySelector('#toggle-preview');
-
-// Reactivity
-addEventListener('resize', () => {
-	const displayStatus = getComputedStyle(previewRadio).display;
-	if(previewRadio.checked && displayStatus === 'none') {
-		radios[0].click();
-	}
-})
 
 function switchTabs(evt) {
 	for(let i = 0; i < tabs.length; i++) {
@@ -38,3 +62,10 @@ for(let i = 0; i < radios.length; i++) {
 }
 
 switchTabs({currentTarget: {num: 0}});
+// Reactivity
+addEventListener('resize', () => {
+	const displayStatus = getComputedStyle(previewRadio).display;
+	if(previewRadio.checked && displayStatus === 'none') {
+		radios[0].click();
+	}
+})

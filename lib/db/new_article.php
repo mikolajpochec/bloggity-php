@@ -1,6 +1,6 @@
 <?php
 function new_article() {
-	include $_SERVER['DOCUMENT_ROOT'] . '/../lib/db/conn.php';
+	include_once $_SERVER['DOCUMENT_ROOT'] . '/../lib/db/conn.php';
 	$conn = makeConnection();
 	if($conn->connect_error) {
 		$result = array("result" => "error", "reason" => "Internal error.");
@@ -9,7 +9,7 @@ function new_article() {
 	$conn->query("USE site_content");
 	$query_result = $conn->query("
 	INSERT INTO articles (title, mdcontent, tags, status)
-	VALUES ('New Article', '', '', 'draft')
+	VALUES ('New Article', '# New Article \n Start here', '', 'draft')
 	");
 	if ($query_result) {
 		$last_id = $conn->insert_id;

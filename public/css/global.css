@@ -85,6 +85,7 @@ article h6 {
 
 article {
 	max-width: var(--article-max-width);
+	width: var(--article-max-width);
 }
 
 article * {

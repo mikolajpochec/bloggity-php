@@ -1,6 +1,6 @@
 <?php
 function update_article($id, $values_array) {
-	include $_SERVER['DOCUMENT_ROOT'] . '/../lib/db/conn.php';
+	include_once $_SERVER['DOCUMENT_ROOT'] . '/../lib/db/conn.php';
 	$conn = makeConnection();
 	$conn->query("USE site_content");
 	$stmt = $conn->prepare("

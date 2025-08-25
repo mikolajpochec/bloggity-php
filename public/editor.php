@@ -1,14 +1,26 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT'] . '/../auth/auth.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/../auth/auth.php';
+
 if(!tryAuth()) {
 	header("Location: /login.php");
 	die();
 }
-include_once $_SERVER['DOCUMENT_ROOT'] . '/../lib/db/makedb.php';
 
 if(!isset($_GET['id'])) {
+	include_once $_SERVER['DOCUMENT_ROOT'] . '/../lib/db/new_article.php';
+	$result = new_article();
+	header('Location: ' . '/editor.php?id=' . $result['article_id']);
 	die();
 }
+
+include_once $_SERVER['DOCUMENT_ROOT'] . '/../lib/db/get_article.php';
+$result = get_article($_GET['id']);
+if($result['result'] != 'success') {
+	echo "<b>Error</b><br>Reason: " . $result['reason'];
+	die();
+}
+$article = $result['data'];
+unset($result);
 ?>
 
 <head>
@@ -21,7 +33,7 @@ if(!isset($_GET['id'])) {
 		<div class="nav">
 			<a href="/panel.php?item=articles">back</a>
 			<b>Editor</b>
-			<i class="nav-article-title">Article Title</i>
+			<i class="nav-article-title"><?php echo $article['title'] ?></i>
 			<div class="multiple-choice-container">
 				<label for="toggle-edit">Edit
 					<input checked id="toggle-edit" type="radio" name="tab"/>
@@ -40,14 +52,14 @@ if(!isset($_GET['id'])) {
 					toolbar placeholder
 				</div>
 				<div class="editor-responsive">
-					<textarea id="editor-field"></textarea>
+					<textarea id="editor-field"><?php echo $article['mdcontent'] ?></textarea>
 					<div class="preview">
 						<article id="editor-preview">
 						</article>
 					</div>
 				</div>
 				<div class="toolbar">
-					toolbar placeholder
+					<span id="changes-status">✅ all changes saved</span>
 				</div>
 			</div>
 			<div class="full-vertical-center">
@@ -63,5 +75,7 @@ if(!isset($_GET['id'])) {
 			</div>
 		</div>
 	</div>
+	<script>var articleId = <?php echo $article['id'] ?></script>
 	<script src="/js/editor.js" type="text/javascript"></script>
+	<script>updatePreview()</script>
 </body>
