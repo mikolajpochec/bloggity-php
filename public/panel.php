@@ -34,6 +34,7 @@ $menu = array(
 		"category" => "Settings",
 		"items" => array(
 			array("id" => "general", "text" => "🌐 general"),
+			array("id" => "editor", "text" => "✏️ editor"),
 			array("id" => "security", "text" => "🚨 security"),
 		)
 	),
