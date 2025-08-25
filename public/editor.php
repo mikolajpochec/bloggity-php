@@ -69,9 +69,7 @@ unset($result);
 				</div>
 			</div>
 			<div class="full-vertical-center">
-				<div>
 				<input type="text" name="title" placeholder="Title">
-				</div>
 			</div>
 		</div>
 	</div>
