@@ -78,3 +78,32 @@ addEventListener('resize', () => {
 		radios[0].click();
 	}
 })
+
+// Metadata user update
+function updateArticleMetadata() {
+	let form = document.querySelector("#publish-form");
+	let formData = new FormData(form);
+	let payload = "";
+	let addAnd = false;
+	for (const [key, value] of formData) {
+		if(addAnd) {
+			payload += `&`;
+		}
+		payload += `${key}=${value}`;
+		if(!addAnd) {
+			addAnd = true;
+		}
+	}
+	var xhr = new XMLHttpRequest();
+		xhr.open("POST", "/api/article/update", true);
+		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		xhr.onreadystatechange = () => {
+			if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+				const json = JSON.parse(xhr.response);
+				if(json.result === 'success') {
+					// TODO: Success
+				}
+			}
+		};
+		xhr.send(payload);
+}

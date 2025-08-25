@@ -68,8 +68,48 @@ unset($result);
 					</article>
 				</div>
 			</div>
-			<div class="full-vertical-center">
-				<input type="text" name="title" placeholder="Title">
+			<div class="full-vertical-center publish-page">
+				<form id="publish-form">
+					<h1>Metadata</h1>
+					<input name="id" style="display:none" value="<?php echo $article['id'] ?>"></input>
+					<b>Title</b>
+					<input type="text" name="title" value="<?php echo $article['title'] ?>"placeholder="Enter title...">
+					<b>Tags</b>
+					<input type="text" name="tags" value="<?php echo $article['tags'] ?>"placeholder="history, science...">
+					<b>Category</b>
+					<select name="category_id">
+						<?php 
+						include_once $_SERVER['DOCUMENT_ROOT'] . '/../lib/db/get_categories.php';
+						$categories = get_categories();
+						if($categories) {
+							foreach($categories as $cat) {
+								$html =  '<option';
+								if($cat['category_id'] == $article['category_id']) {
+									$html = $html . ' selected';
+								}
+								$html = $html .	' value="' .  $cat['category_id'] . '">' .
+								   	$cat['category_name'] . '</option>';
+								echo $html;
+							}
+						}
+						?>
+					</select>
+					<b>Status</b>
+					<select name="status">
+						<?php
+						$status_values = ['public', 'draft', 'archive'];
+						foreach($status_values as $value) {
+							$html = '<option';
+							if($value == $article['status']) {
+								$html = $html . ' selected';
+							}
+							$html = $html . ' value="' . $value . '">' . $value . '</option>';
+							echo $html;
+						}
+						?>
+					</select>
+					<button type="button" onclick="updateArticleMetadata()">Save</button>
+				</form>
 			</div>
 		</div>
 	</div>

@@ -67,6 +67,38 @@ textarea::-webkit-scrollbar {
 	width: 100%;
 }
 
+.chip {
+	width: auto !important;
+	padding: calc(var(--global-content-padding) / 2);
+	background-color: var(--foreground);
+	border: 0;
+	outline: 0;
+}
+
+.publish-page {
+	 background-color: var(--background);
+	 justify-content: center;
+}
+
+form {
+	background-color: var(--background);
+	padding: var(--global-content-padding);
+	border-radius: var(--global-border-radius);
+	width: 100%;
+	max-width: calc(var(--article-max-width) * 0.75);
+	justify-self: center;
+	overflow-y: auto;
+}
+
+form input, form select{
+	width: 100%;
+	margin: var(--global-content-padding) 0;
+}
+
+form button {
+	width: 100%;
+}
+
 /*
  * This is obviously double the size of the max
  * article width plus some size. 
