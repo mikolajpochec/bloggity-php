@@ -1,10 +1,14 @@
 <?php
-include '../auth/auth.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/../auth/auth.php';
 if(!tryAuth()) {
 	header("Location: /login.php");
 	die();
 }
-include '../lib/db/makedb.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/../lib/db/makedb.php';
+
+if(!isset($_GET['id'])) {
+	die();
+}
 ?>
 
 <head>

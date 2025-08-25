@@ -30,22 +30,25 @@ function destroyAdminSession() {
 }
 
 function tryAuth($password = null) {
-	$session_id = session_id();
 	if(is_null($password)) {
 		// Check the current session status
 		$info = readAdminSessionInfo();
-		if($info !== false) {
-			return $info->session_id === $session_id && $info->valid_until >= time();
+		if($info) {
+			$is_valid = $info->session_id === session_id() && $info->valid_until >= time();
+			if(!$is_valid) { session_destroy(); }
+			return $is_valid;
 		}
+		session_destroy();
 		return false;
 	}
 	else {
 		// Try to create new session status
+		session_regenerate_id(true);
 		$adminHash = trim(file_get_contents(ADMIN_HASH_PATH));
 		$auth_result = password_verify($password, $adminHash);
 		if($auth_result) {
 			$info = array(
-				"session_id" => $session_id,
+				"session_id" => session_id(),
 				"valid_until" => time() + ADMIN_SESSION_DURATION_SECONDS
 			);
 			writeAdminSessionInfo($info);

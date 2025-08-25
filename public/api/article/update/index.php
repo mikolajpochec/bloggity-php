@@ -19,30 +19,6 @@ if((!isset($_POST['id'])) or count($_POST) < 2) {
 	echo json_encode($result);
 	die();
 }
-
-include $_SERVER['DOCUMENT_ROOT'] . '/../lib/db/conn.php';
-$conn = makeConnection();
-$conn->query("USE site_content");
-$stmt = $conn->prepare("
-	SELECT id, title, mdcontent, tags, category_id, status
-	FROM articles
-	WHERE id = ?
-	");
-$stmt->bind_param("i", $_POST['id']); 
-$stmt->execute();
-$result = $stmt->get_result();
-$article = $result->fetch_all(MYSQLI_ASSOC)[0];
-foreach ($_POST as $key => $value) {
-    if (!is_null($value)) {
-        $article[$key] = $value;
-    }
-}
-$stmt = $conn->prepare("
-	UPDATE articles
-	SET title = ?, mdcontent = ?, tags = ?, category_id = ?, status = ?
-	WHERE id = ?
-	");
-$stmt->bind_param("sssisi", $article['title'], $article['mdcontent'],
-	$article['tags'], $article['category_id'], $article['status'], $article['id']); 
-$stmt->execute();
+include $_SERVER['DOCUMENT_ROOT'] . '/../lib/db/update_article.php';
+echo json_encode(update_article($_POST['id'], $_POST));
 ?>
