@@ -11,39 +11,39 @@
 }
 
 @media (prefers-color-scheme: light) {
-	:root {
-		--text: #1a241a;
-		--placeholder: #aaa4aa;
-		--text-on-primary: #ffffff;
-		--background: #f0f5f0;
-		--foreground: #ffffff;
-		--primary: #3e7d52;
-		--secondary: #6aa77b;
-		--accent: #d9a066;
-		--shadow: #1a241a33;
-		--valid-primary: #cce7d3;
-		--valid-secondary: #3e7d52;
-		--invalid-primary: #f4d6d1;
-		--invalid-secondary: #a14f45;
-	}
+    :root {
+        --text: #36332d;
+        --placeholder: #8d877e;
+        --text-on-primary: #ffffff;
+        --background: #f8f6f0;
+        --foreground: #ffffff;
+        --primary: #4c433b;
+        --secondary: #877f72;
+        --accent: #a6532d;
+        --shadow: rgba(54, 51, 45, 0.1);
+        --valid-primary: #e8f5ef;
+        --valid-secondary: #3f765a;
+        --invalid-primary: #fae8e6;
+        --invalid-secondary: #b2504d;
+    }
 }
 
 @media (prefers-color-scheme: dark) {
-	:root {
-		--text: #e3f0e3;
-		--placeholder: #aaa4aa;
-		--text-on-primary: #1a241a;
-		--background: #101610;
-		--foreground: #243124;
-		--primary: #5fb073;
-		--secondary: #85b18c;
-		--accent: #d9a066;
-		--shadow: #00000055;
-		--valid-primary: #3e7d52;
-		--valid-secondary: #cce7d3;
-		--invalid-primary: #a14f45;
-		--invalid-secondary: #f4d6d1;
-	}
+    :root {
+        --text: #dcd9d4;
+        --placeholder: #7c766f;
+        --text-on-primary: #111111;
+        --background: #121211;
+        --foreground: #1e1e1d;
+        --primary: #6b6255;
+        --secondary: #45413a;
+        --accent: #c26e47;
+        --shadow: rgba(0, 0, 0, 0.5);
+        --valid-primary: #3f765a;
+        --valid-secondary: #d7ebe1;
+        --invalid-primary: #a14440;
+        --invalid-secondary: #f3d1cf;
+    }
 }
 
 /* === BEGIN ARTICLE DEFAULT STYLE === */
