@@ -13,8 +13,9 @@ inputField.addEventListener('input', updatePreview)
 
 //Autosave
 var timeoutId;
-const AUTOSAVE_TIME_MS = 2000;
+const AUTOSAVE_TIME_MS = 2000
 let changesStatus = document.querySelector("#changes-status")
+let unsaved = false
 
 function setAutosaveTimer() {
 	clearTimeout(timeoutId);
@@ -27,6 +28,7 @@ function setAutosaveTimer() {
 				const json = JSON.parse(xhr.response);
 				if(json.result === 'success') {
 					changesStatus.innerHTML = "✅ all changes saved"
+					unsaved = false
 					return
 				}
 				changesStatus.innerHTML = "❌ error"
@@ -38,8 +40,15 @@ function setAutosaveTimer() {
 
 inputField.addEventListener('input', () => { 
 	changesStatus.innerHTML = "❗ unsaved changes"
+	unsaved = true
 	setAutosaveTimer()
 })
+
+// Unsaved changes warning
+window.addEventListener("beforeunload", (event) => {
+	if (!unsaved) return;
+	event.preventDefault();
+});
 
 // Tab switch
 const tabs = document.querySelectorAll('#tabs > div');
