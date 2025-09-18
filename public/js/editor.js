@@ -34,7 +34,7 @@ function setAutosaveTimer() {
 				changesStatus.innerHTML = "❌ error"
 			}
 		};
-		xhr.send(`id=${articleId}&mdcontent=${inputField.value}`);
+		xhr.send(`id=${articleId}&md_content=${inputField.value}`);
 	}, AUTOSAVE_TIME_MS)
 }
 
@@ -85,6 +85,12 @@ function updateArticleMetadata() {
 	let formData = new FormData(form);
 	let payload = "";
 	let addAnd = false;
+	if(formData.get("status") == "public") {
+		let htmlContent = document.querySelector("#editor-preview");
+		formData.set("html", htmlContent.innerHTML);
+		formData.set("md_content_latest_published", inputField.value);
+	}
+	console.log(formData);
 	for (const [key, value] of formData) {
 		if(addAnd) {
 			payload += `&`;

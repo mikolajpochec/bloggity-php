@@ -52,7 +52,7 @@ unset($result);
 					toolbar placeholder
 				</div>
 				<div class="editor-responsive">
-					<textarea id="editor-field"><?php echo $article['mdcontent'] ?></textarea>
+					<textarea id="editor-field"><?php echo $article['md_content'] ?></textarea>
 					<div class="preview">
 						<article id="editor-preview">
 						</article>

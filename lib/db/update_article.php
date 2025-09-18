@@ -4,7 +4,7 @@ function update_article($id, $values_array) {
 	$conn = makeConnection();
 	$conn->query("USE site_content");
 	$stmt = $conn->prepare("
-		SELECT id, title, mdcontent, tags, category_id, status
+		SELECT id, title, md_content, md_content_latest_published, tags, category_id, status, html
 		FROM articles
 		WHERE id = ?
 	");
@@ -19,11 +19,12 @@ function update_article($id, $values_array) {
 	}
 	$stmt = $conn->prepare("
 		UPDATE articles
-		SET title = ?, mdcontent = ?, tags = ?, category_id = ?, status = ?
-		WHERE id = ?
+		SET title = ?, md_content = ?, tags = ?, category_id = ?, status = ?, html = ?,
+		md_content_latest_published = ? WHERE id = ?
 	");
-	$stmt->bind_param("sssisi", $article['title'], $article['mdcontent'],
-		$article['tags'], $article['category_id'], $article['status'], $article['id']); 
+	$stmt->bind_param("sssisssi", $article['title'], $article['md_content'],
+		$article['tags'], $article['category_id'], $article['status'],
+	   	$article['html'], $article['md_content_latest_published'], $article['id']); 
 	if($stmt->execute()) {
 		return array("result" => "success");
 	} else {

@@ -22,7 +22,9 @@ $conn->query("
 	CREATE TABLE IF NOT EXISTS articles (
 		id INT AUTO_INCREMENT PRIMARY KEY,
 		title VARCHAR(512) NOT NULL,
-		mdcontent MEDIUMTEXT NOT NULL, 
+		md_content MEDIUMTEXT NOT NULL, 
+		md_content_latest_published MEDIUMTEXT NULL DEFAULT NULL, 
+		html LONGTEXT NULL DEFAULT NULL, 
 		tags VARCHAR(512) NOT NULL,
 		category_id INT,
 		status ENUM('public', 'draft', 'archive', 'private') NOT NULL DEFAULT 'draft',

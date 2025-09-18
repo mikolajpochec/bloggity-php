@@ -8,8 +8,8 @@ function new_article() {
 	}
 	$conn->query("USE site_content");
 	$query_result = $conn->query("
-	INSERT INTO articles (title, mdcontent, tags, status)
-	VALUES ('New Article', '# New Article \n Start here', '', 'draft')
+	INSERT INTO articles (title, md_content, md_content_latest_published, tags, status)
+	VALUES ('New Article', '# New Article \n Start here', NULL, '', 'draft')
 	");
 	if ($query_result) {
 		$last_id = $conn->insert_id;
