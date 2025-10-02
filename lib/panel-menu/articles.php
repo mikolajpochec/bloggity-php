@@ -1,7 +1,7 @@
 <div class="column-container">
-	<div class="vertical-container">
+	<form class="vertical-container">
 		<b>Filter</b>
-		<input type="text" placeholder="Search..."/>
+		<input name="" type="text" placeholder="Search..."/>
 		<div class="row-container gaps">
 			<div class="row-container">
 			<input checked="checked" id="chck-published" type="checkbox"/>
@@ -20,8 +20,24 @@
 			<label for="chck-private">Private</label>
 			</div>
 		</div>
-		<div class="scrollable-list">
-
+		<div class="scrollable-list articles-list-preview">
+			<?php
+			include_once $_SERVER['DOCUMENT_ROOT'] . '/../lib/db/search_articles.php';
+			$result = search_articles(title_query: "map", category_id: 2);
+			var_dump($result);
+			?>
+			<div class="elevated">
+				<b>Test title</b>
+				<p><i>Once upon a time. Lorem ipsum dolor sit amet...</i></p>
+				<p><i class="category">category_name</i></p>
+			</div>
+			<div class="elevated">
+				<b>Test title</b>
+				<p><i>Once upon a time. Lorem ipsum dolor sit amet...</i></p>
+				<p><i class="category">category_name</i></p>
+			</div>
+			<?php
+			?>
 		</div>
-	</div>
+	</form>
 </div>
