@@ -8,6 +8,9 @@ function fetchArticlesAsync() {
 	checkBox.forEach((e) => {
 		if(e.checked) query += `${e.getAttribute("data-status")},`;
 	});
+	if(query.slice(-1) == ',') { 
+		query = query.slice(0, query.length - 1);
+	}
 	query += `&title=${searchField.value}`;
 	xhr.open("GET", `/api/article${query}`, true);
 	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
