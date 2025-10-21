@@ -1,8 +1,9 @@
 <?php
 function update_article($id, $values_array) {
 	include_once $_SERVER['DOCUMENT_ROOT'] . '/lib/db/conn.php';
+	$env = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . "/.env");
 	$conn = makeConnection();
-	$conn->query("USE site_content");
+	$conn->query("USE " . $env["DB_NAME"]);
 	$stmt = $conn->prepare("
 		SELECT id, title, md_content, md_content_latest_published, tags, category_id, status, html
 		FROM articles

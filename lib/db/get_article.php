@@ -1,8 +1,9 @@
 <?php
 function get_article($id) {
 	include_once $_SERVER['DOCUMENT_ROOT'] . '/lib/db/conn.php';
+	$env = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . "/.env");
 	$conn = makeConnection();
-	$conn->query("USE site_content");
+	$conn->query("USE " . $env["DB_NAME"]);
 	if($conn->connect_error) {
 		$result = array("result" => "error", "reason" => "Internal error.");
 		return $result;

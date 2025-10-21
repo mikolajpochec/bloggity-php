@@ -1,6 +1,8 @@
 <?php
 
 include $_SERVER['DOCUMENT_ROOT'] . '/lib/db/conn.php';
+$env = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . "/.env");
+$db_name = $env['DB_NAME'];
 $conn = makeConnection();
 
 if($conn->connect_error) {
@@ -9,9 +11,9 @@ if($conn->connect_error) {
 
 # Create DB
 $conn->query("
-	CREATE DATABASE IF NOT EXISTS site_content 
-	CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci");
-$conn->query("USE site_content");
+	CREATE DATABASE IF NOT EXISTS " . $db_name .
+	" CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci");
+$conn->query("USE " . $db_name);
 $conn->query("
 	CREATE TABLE IF NOT EXISTS categories (
 		category_id INT AUTO_INCREMENT PRIMARY KEY,

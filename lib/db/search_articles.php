@@ -3,12 +3,13 @@ function search_articles($title_query = "", $md_content_query = "",
 	$category_id = NULL, $id = NULL, $offset = 0, $limit = NULL,
 	$status = "public,draft,archive,private")  {
 	include_once $_SERVER['DOCUMENT_ROOT'] . '/lib/db/conn.php';
+	$env = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . "/.env");
 	$conn = makeConnection();
 	if($conn->connect_error) {
 		$result = array("result" => "error", "reason" => "Internal error.");
 		return $result;
 	}
-	$conn->query("USE site_content");
+	$conn->query("USE " . $env["DB_NAME"] );
 	if(is_null($id)) {
 		$MAX_STATUS_NUMBER = 4;
 		$title_query = '%' . $title_query . '%';
