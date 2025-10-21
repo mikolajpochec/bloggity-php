@@ -12,7 +12,7 @@ function fetchArticlesAsync() {
 		query = query.slice(0, query.length - 1);
 	}
 	query += `&title=${searchField.value}`;
-	xhr.open("GET", `/api/article${query}`, true);
+	xhr.open("GET", `/api/article.php${query}`, true);
 	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	xhr.onreadystatechange = () => {
 		if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {

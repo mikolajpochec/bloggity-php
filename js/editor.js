@@ -21,7 +21,7 @@ function setAutosaveTimer() {
 	clearTimeout(timeoutId);
 	timeoutId = setTimeout(() => {
 		var xhr = new XMLHttpRequest();
-		xhr.open("POST", "/api/article/update", true);
+		xhr.open("POST", "/api/article/update.php", true);
 		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 		xhr.onreadystatechange = () => {
 			if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
@@ -101,7 +101,7 @@ function updateArticleMetadata() {
 		}
 	}
 	var xhr = new XMLHttpRequest();
-		xhr.open("POST", "/api/article/update", true);
+		xhr.open("POST", "/api/article/update.php", true);
 		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 		xhr.onreadystatechange = () => {
 			if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
