@@ -1,6 +1,6 @@
 <?php
 function new_article() {
-	include_once $_SERVER['DOCUMENT_ROOT'] . '/../lib/db/conn.php';
+	include_once $_SERVER['DOCUMENT_ROOT'] . '/lib/db/conn.php';
 	$conn = makeConnection();
 	if($conn->connect_error) {
 		$result = array("result" => "error", "reason" => "Internal error.");

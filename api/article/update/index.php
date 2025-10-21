@@ -7,7 +7,7 @@ header("Access-Control-Allow-Methods: POST");
 	 die();
  }
 
-include $_SERVER['DOCUMENT_ROOT'] . '/../auth/auth.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/auth/auth.php';
 if(!tryAuth()) {
 	$result = array("result" => "error", "reason" => "Unauthorized");
 	echo json_encode($result);
@@ -19,6 +19,6 @@ if((!isset($_POST['id'])) or count($_POST) < 2) {
 	echo json_encode($result);
 	die();
 }
-include $_SERVER['DOCUMENT_ROOT'] . '/../lib/db/update_article.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/lib/db/update_article.php';
 echo json_encode(update_article($_POST['id'], $_POST));
 ?>

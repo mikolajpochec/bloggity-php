@@ -1,5 +1,5 @@
 <?php
-include '../auth/auth.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/auth/auth.php';
 
 $is_auth = false;
 
@@ -19,7 +19,7 @@ if (isset($_POST['password'])) {
 <!DOCTYPE html>
 <html>
 <head>
-	<?php include '../lib/common/head.php'; ?>
+	<?php include $_SERVER['DOCUMENT_ROOT'] . '/lib/common/head.php'; ?>
 	<link rel="stylesheet" href="/css/login.css">
 </head>
 <body>

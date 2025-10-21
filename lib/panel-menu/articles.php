@@ -1,43 +1,28 @@
 <div class="column-container">
 	<form class="vertical-container">
 		<b>Filter</b>
-		<input name="" type="text" placeholder="Search..."/>
+		<input id="search-field" name="" type="text" placeholder="Search..."/>
 		<div class="row-container gaps">
 			<div class="row-container">
-			<input checked="checked" id="chck-published" type="checkbox"/>
+			<input checked="checked" id="chck-published" type="checkbox" data-status="public"/>
 			<label for="chck-published">Published</label>
 			</div>
 			<div class="row-container">
-			<input checked="checked" id="chck-drafts" type="checkbox"/>
+			<input checked="checked" id="chck-drafts" type="checkbox" data-status="draft"/>
 			<label for="chck-drafts">Drafts</label>
 			</div>
 			<div class="row-container">
-			<input checked="checked" id="chck-archivized" type="checkbox"/>
+			<input checked="checked" id="chck-archivized" type="checkbox" data-status="archive"/>
 			<label for="chck-archivized">Archivized</label>
 			</div>
 			<div class="row-container">
-			<input checked="checked" id="chck-private" type="checkbox"/>
+			<input checked="checked" id="chck-private" type="checkbox" data-status="private"/>
 			<label for="chck-private">Private</label>
 			</div>
 		</div>
-		<div class="scrollable-list articles-list-preview">
-			<?php
-			include_once $_SERVER['DOCUMENT_ROOT'] . '/../lib/db/search_articles.php';
-			$result = search_articles(title_query: "map", category_id: 2);
-			var_dump($result);
-			?>
-			<div class="elevated">
-				<b>Test title</b>
-				<p><i>Once upon a time. Lorem ipsum dolor sit amet...</i></p>
-				<p><i class="category">category_name</i></p>
-			</div>
-			<div class="elevated">
-				<b>Test title</b>
-				<p><i>Once upon a time. Lorem ipsum dolor sit amet...</i></p>
-				<p><i class="category">category_name</i></p>
-			</div>
-			<?php
-			?>
+		<div id="articles-preview-container" class="scrollable-list articles-list-preview">
 		</div>
+		<a href="/editor.php">New article</a>
 	</form>
 </div>
+<script src="/js/articles.js" type="text/javascript"></script>

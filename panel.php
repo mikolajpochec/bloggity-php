@@ -1,13 +1,13 @@
 <?php
-	include '../auth/auth.php';
+	include $_SERVER['DOCUMENT_ROOT'] . '/auth/auth.php';
 	if(!tryAuth()) {
 		header("Location: /login.php");
 		die();
 	}
-	include '../lib/db/makedb.php';
+	include $_SERVER['DOCUMENT_ROOT'] . '/lib/db/makedb.php';
 ?>
 <head>
-	<?php include '../lib/common/head.php'; ?>
+	<?php include './lib/common/head.php'; ?>
 	<link rel="stylesheet" href="/css/panel.css">
 </head>
 
@@ -68,7 +68,7 @@ foreach ($menu as $section) {
 	<div class="item-container">
 <?php
 if(isset($_GET["item"])) {
-	$menuFile = "../lib/panel-menu/" . $_GET["item"] . '.php';
+	$menuFile = $_SERVER['DOCUMENT_ROOT'] . "/lib/panel-menu/" . $_GET["item"] . '.php';
 	if(file_exists($menuFile)) {
 		include $menuFile;
 	} else {

@@ -1,5 +1,5 @@
 <?php
-include_once $_SERVER['DOCUMENT_ROOT'] . '/../auth/auth.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/auth/auth.php';
 header('Content-Type: application/json; charset=utf-8');
 header("Access-Control-Allow-Methods: GET");
 #header('Access-Control-Allow-Origin: <origin>');
@@ -14,7 +14,7 @@ foreach($params as $param) {
 	if(isset($_GET[$param])) $should_perform_search = true;
 }
 if($should_perform_search) {
-	include_once $_SERVER['DOCUMENT_ROOT'] . '/../lib/db/search_articles.php';
+	include_once $_SERVER['DOCUMENT_ROOT'] . '/lib/db/search_articles.php';
 	echo json_encode(
 		search_articles(
 			title_query: isset($_GET['title']) ? $_GET['title'] : "",
@@ -28,7 +28,7 @@ if($should_perform_search) {
 	);
 }
 else if(isset($_GET['id'])) {
-	include_once $_SERVER['DOCUMENT_ROOT'] . '/../lib/db/get_article.php';
+	include_once $_SERVER['DOCUMENT_ROOT'] . '/lib/db/get_article.php';
 	$result = get_article($_GET['id']);
 	echo json_encode($result);
 } else {

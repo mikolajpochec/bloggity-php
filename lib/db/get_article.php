@@ -1,6 +1,6 @@
 <?php
 function get_article($id) {
-	include_once $_SERVER['DOCUMENT_ROOT'] . '/../lib/db/conn.php';
+	include_once $_SERVER['DOCUMENT_ROOT'] . '/lib/db/conn.php';
 	$conn = makeConnection();
 	$conn->query("USE site_content");
 	if($conn->connect_error) {

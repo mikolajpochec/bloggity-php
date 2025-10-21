@@ -38,22 +38,25 @@
 	height: fit-content;
 }
 
-.articles-list-preview > div {
+.articles-list-preview > a {
+	display: block;
+	color: var(--text);
 	background-color: var(--foreground);
 	border: solid 1px var(--secondary);
 	border-radius: var(--global-border-radius);
 	margin-top: var(--global-content-padding);
 	padding: var(--global-content-padding);
+	text-decoration: none;
 }
 
-.articles-list-preview > div {
+.articles-list-preview > a {
 	cursor: pointer;
 }
 
-.articles-list-preview > div > * {
+.articles-list-preview > a > * {
 	margin: 0;
 }
 
-.articles-list-preview > div .category {
+.articles-list-preview > a .category {
 	color: var(--primary);
 }

@@ -1,6 +1,6 @@
 <?php
 
-include '../lib/db/conn.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/lib/db/conn.php';
 $conn = makeConnection();
 
 if($conn->connect_error) {

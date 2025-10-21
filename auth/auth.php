@@ -1,6 +1,6 @@
 <?php
-define("ADMIN_HASH_PATH", $_SERVER['DOCUMENT_ROOT'] . "/../auth/admin_hash");
-define("ADMIN_SESSION_INFO_PATH",  $_SERVER['DOCUMENT_ROOT'] . "/../auth/admin_session");
+define("ADMIN_HASH_PATH", $_SERVER['DOCUMENT_ROOT'] . "/auth/admin_hash");
+define("ADMIN_SESSION_INFO_PATH",  $_SERVER['DOCUMENT_ROOT'] . "/auth/admin_session");
 define("ADMIN_SESSION_DURATION_SECONDS", 60 * 60 * 2);
 
 function writeAdminSessionInfo($session_info) {

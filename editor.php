@@ -1,5 +1,5 @@
 <?php
-include_once $_SERVER['DOCUMENT_ROOT'] . '/../auth/auth.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/auth/auth.php';
 
 if(!tryAuth()) {
 	header("Location: /login.php");
@@ -7,13 +7,13 @@ if(!tryAuth()) {
 }
 
 if(!isset($_GET['id'])) {
-	include_once $_SERVER['DOCUMENT_ROOT'] . '/../lib/db/new_article.php';
+	include_once $_SERVER['DOCUMENT_ROOT'] . '/lib/db/new_article.php';
 	$result = new_article();
 	header('Location: ' . '/editor.php?id=' . $result['article_id']);
 	die();
 }
 
-include_once $_SERVER['DOCUMENT_ROOT'] . '/../lib/db/get_article.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/lib/db/get_article.php';
 $result = get_article($_GET['id']);
 if($result['result'] != 'success') {
 	echo "<b>Error</b><br>Reason: " . $result['reason'];
@@ -24,7 +24,7 @@ unset($result);
 ?>
 
 <head>
-	<?php include '../lib/common/head.php'; ?>
+	<?php include $_SERVER['DOCUMENT_ROOT'] . '/lib/common/head.php'; ?>
 	<link rel="stylesheet" href="/css/editor.css">
 	<script src="/js/parser.js" type="text/javascript"></script>
 </head>
@@ -79,7 +79,7 @@ unset($result);
 					<b>Category</b>
 					<select name="category_id">
 						<?php 
-						include_once $_SERVER['DOCUMENT_ROOT'] . '/../lib/db/get_categories.php';
+						include_once $_SERVER['DOCUMENT_ROOT'] . '/lib/db/get_categories.php';
 						$categories = get_categories();
 						if($categories) {
 							foreach($categories as $cat) {
