@@ -20,7 +20,8 @@ $menu = array(
 		"category" => "Content managment",
 		"items" => array(
 			array("id" => "articles", "text" => "📰 articles"),
-			array("id" => "categories", "text" => "🧰 categories")
+			array("id" => "categories", "text" => "🧰 categories"),
+			array("id" => "media", "text" => "🖼️ media")
 		)
 	),
 	array(
