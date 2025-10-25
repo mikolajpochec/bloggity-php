@@ -9,7 +9,7 @@ function get_article($id) {
 		return $result;
 	}
     $stmt = $conn->prepare("
-        SELECT id, title, md_content, tags, category_id, status
+        SELECT id, title, md_content, tags, category_id, status, html
         FROM articles
         WHERE id = ?
     ");

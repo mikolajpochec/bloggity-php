@@ -6,5 +6,27 @@
 		<link rel="stylesheet" href="/css/global.css">
 	</head>
 	<body>
+<?php
+include_once $_SERVER["DOCUMENT_ROOT"] . "/lib/common/config.php";
+echo $config->get("metadata", "blog_name");
+
+if(isset($_GET["article_id"])) {
+	include_once $_SERVER["DOCUMENT_ROOT"] . "/lib/db/get_article.php";
+	$response = get_article($_GET["article_id"]);
+	if($response["result"] == "success") {
+		if($response["data"]["status"] == "public") {
+			echo "<div class='full-vertical-center'><article>";
+			echo $response["data"]["html"];
+			echo "</article></div>";
+		}
+		else {
+			echo "This article is hidden."; 
+		}
+	}
+	else {
+			echo "Cannot retrieve this article."; 
+	}
+}
+?>
 	</body>
 </html>
