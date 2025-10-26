@@ -32,7 +32,7 @@ function search_articles($title_query = "", $md_content_query = "",
 		$stmt->bind_param("i", $id);
 	}
 	if(!$stmt->execute()) {
-		return array("result" => "error");
+		return array("result" => "error", "reason" => "SQL query failed.");
 	}
 	$result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 	return array("result" => "success", "data" => $result);
