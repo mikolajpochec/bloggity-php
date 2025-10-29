@@ -2,6 +2,7 @@
 if(isset($_GET["new-category-name"]) && !empty($_GET["new-category-name"])) {
 	include_once $_SERVER["DOCUMENT_ROOT"] . "/lib/db/new_category.php";
 	new_category($_GET["new-category-name"]);
+	header("Location: /panel.php?item=categories");
 }
 ?>
 <div class="column-container">
@@ -22,7 +23,6 @@ if(isset($_GET["new-category-name"]) && !empty($_GET["new-category-name"])) {
 															. $category["category_id"] . '">
 								<b>' . $category["category_name"] . '</b>
 								<div class="flow-right row-container">
-									<button>Rename</button>
 									<button class="button-not-safe"' .
 										' onclick="deleteArticleAPI(' . $category['category_id'] . ')">
 										Delete
