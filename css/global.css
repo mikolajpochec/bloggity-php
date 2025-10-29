@@ -25,6 +25,7 @@
         --valid-secondary: #3f765a;
         --invalid-primary: #fae8e6;
         --invalid-secondary: #b2504d;
+        --not-safe: #a65300;
     }
 }
 
@@ -43,6 +44,7 @@
         --valid-secondary: #d7ebe1;
         --invalid-primary: #a14440;
         --invalid-secondary: #f3d1cf;
+        --not-safe: #ad5500;
     }
 }
 
@@ -317,6 +319,10 @@ input, button, select {
 	font-size: 1rem;
 }
 
+.button-not-safe {
+	background-color: var(--not-safe);
+}
+
 input[type="text"] {
 	transition: all 0.250s ease-in-out;
 	outline: none;
@@ -368,5 +374,14 @@ a, a:link, a:visited, a:active {
 	color: var(--text);
 }
 
+.panel {
+	display: block;
+	color: var(--text);
+	background-color: var(--foreground);
+	border: solid 1px var(--secondary);
+	border-radius: var(--global-border-radius);
+	padding: var(--global-content-padding);
+	text-decoration: none;
+}
 
 /* === END COMMON UI ELEMENTS === */

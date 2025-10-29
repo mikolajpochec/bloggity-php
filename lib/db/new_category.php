@@ -1,7 +1,7 @@
 <?php
 function new_category($name) {
 	include_once $_SERVER["DOCUMENT_ROOT"] . "/lib/db/conn.php";
-	$env = parse_ini_file($_SERVER["DOCUMENT_ROOT"] . "/.env";
+	$env = parse_ini_file($_SERVER["DOCUMENT_ROOT"] . "/.env");
 	$conn = makeConnection();
 	if($conn->connect_error) {
 		$result = array("result" => "error", "reason" => "Internal error");

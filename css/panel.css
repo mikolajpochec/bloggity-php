@@ -1,3 +1,4 @@
+/* ===== ARTICLES ===== */
 .item-container {
 	position: relative;
 	margin: var(--global-content-padding);
@@ -39,24 +40,38 @@
 }
 
 .articles-list-preview > a {
-	display: block;
-	color: var(--text);
-	background-color: var(--foreground);
-	border: solid 1px var(--secondary);
-	border-radius: var(--global-border-radius);
-	margin-top: var(--global-content-padding);
-	padding: var(--global-content-padding);
-	text-decoration: none;
-}
-
-.articles-list-preview > a {
 	cursor: pointer;
+	margin-top: var(--global-content-padding);
 }
 
 .articles-list-preview > a > * {
+	color: var(--text) !important;
 	margin: 0;
 }
 
 .articles-list-preview > a .category {
 	color: var(--primary);
 }
+
+/* ==== CATEGORIES ==== */
+
+.category-item {
+	margin-bottom: var(--global-content-padding);
+}
+
+.category-item * {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.category-item > .flow-right {
+	margin-left: auto;
+	gap: var(--global-content-padding);
+}
+
+/* ====== COMMON ====== */
+
+button {
+	margin: var(--global-content-padding) 0;
+}
+

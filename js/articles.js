@@ -2,6 +2,7 @@ var searchField = document.querySelector("#search-field");
 var checkBox = document.querySelectorAll("input[type='checkbox']");
 var articlesContainer = document.querySelector("#articles-preview-container");
 const MAX_MD_CONTENT_PREVIEW_LENGTH = 100;
+
 function fetchArticlesAsync() {
 	var xhr = new XMLHttpRequest();
 	let query = "?status=";
@@ -24,7 +25,7 @@ function fetchArticlesAsync() {
 						content = `${content.slice(0, content.length - 3)}...`;
 					}
 					articlesContainer.innerHTML += `
-					<a class="elevated" href="/editor.php?id=${e.id}">
+					<a class="elevated panel" href="/editor.php?id=${e.id}">
 						<b>${e.title}</b>
 						<p><i>${content}</i></p>
 						<p><i class="category">${e.category_id == null ? "No category" : e.category_id}</i></p>
