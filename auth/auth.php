@@ -3,12 +3,22 @@ define("ADMIN_HASH_PATH", $_SERVER['DOCUMENT_ROOT'] . "/auth/admin_hash");
 define("ADMIN_SESSION_INFO_PATH",  $_SERVER['DOCUMENT_ROOT'] . "/auth/admin_session");
 define("ADMIN_SESSION_DURATION_SECONDS", 60 * 60 * 2);
 
+function updatePassword($new_password) {
+	$file = fopen(ADMIN_HASH_PATH, "w+");
+	$hash = password_hash($new_password, PASSWORD_DEFAULT);
+	if(fwrite($file, $hash) === false) {
+		return false;
+	}
+	return true;
+}
+
 function writeAdminSessionInfo($session_info) {
 	$file = fopen(ADMIN_SESSION_INFO_PATH, "w+");
 	$jsonEnc = json_encode($session_info);
 	if(fwrite($file, $jsonEnc) === false) {
 		return false;
 	}
+	return true;
 }
 
 function readAdminSessionInfo() {
@@ -27,6 +37,12 @@ function destroyAdminSession() {
 	);
 	writeAdminSessionInfo($info);
 	session_destroy();
+}
+
+function verifyPassword($password) {
+	$adminHash = trim(file_get_contents(ADMIN_HASH_PATH));
+	$auth_result = password_verify($password, $adminHash);
+	return $auth_result;
 }
 
 function tryAuth($password = null) {

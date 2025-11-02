@@ -21,7 +21,7 @@ if(isset($_GET["new-category-name"]) && !empty($_GET["new-category-name"])) {
 				foreach($categories as $category) {
 					echo   '<div class="panel row-container elevated category-item" id="cat-panel-'
 															. $category["category_id"] . '">
-								<b>' . $category["category_name"] . '</b>
+								<p>' . $category["category_name"] . '</p>
 								<div class="flow-right row-container">
 									<button class="button-not-safe"' .
 										' onclick="deleteArticleAPI(' . $category['category_id'] . ')">

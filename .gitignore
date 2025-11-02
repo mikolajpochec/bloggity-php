@@ -1,6 +1,5 @@
 # Authentication
-./auth/admin_session
-./auth/admin_hash
+auth/*
 
 # Credentials
 .env

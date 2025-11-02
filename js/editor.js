@@ -101,15 +101,15 @@ function updateArticleMetadata() {
 		}
 	}
 	var xhr = new XMLHttpRequest();
-		xhr.open("POST", "/api/article/update.php", true);
-		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-		xhr.onreadystatechange = () => {
-			if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-				const json = JSON.parse(xhr.response);
-				if(json.result === 'success') {
-					// TODO: Success
-				}
+	xhr.open("POST", "/api/article/update.php", true);
+	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	xhr.onreadystatechange = () => {
+		if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+			const json = JSON.parse(xhr.response);
+			if(json.result === 'success') {
+				// TODO: Success
 			}
-		};
-		xhr.send(payload);
+		}
+	};
+	xhr.send(payload);
 }

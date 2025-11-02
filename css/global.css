@@ -384,4 +384,8 @@ a, a:link, a:visited, a:active {
 	text-decoration: none;
 }
 
+.warning-text {
+	color: var(--invalid-primary);
+}
+
 /* === END COMMON UI ELEMENTS === */
