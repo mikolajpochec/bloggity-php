@@ -33,7 +33,7 @@ unset($result);
 		<div class="nav">
 			<a href="/panel.php?item=articles">back</a>
 			<b>Editor</b>
-			<i class="nav-article-title"><?php echo $article['title'] ?></i>
+			<i id="article-title" class="nav-article-title"><?php echo $article['title'] ?></i>
 			<div class="multiple-choice-container">
 				<label for="toggle-edit">Edit
 					<input checked id="toggle-edit" type="radio" name="tab"/>
@@ -113,7 +113,7 @@ unset($result);
 			</div>
 		</div>
 	</div>
-	<script>var articleId = <?php echo $article['id'] ?></script>
+	<script>var articleId = <?php echo $article['id'] ?>; let title = "<?php echo $article['title'] ?>";</script>
 	<script src="/js/editor.js" type="text/javascript"></script>
 	<script>updatePreview()</script>
 </body>

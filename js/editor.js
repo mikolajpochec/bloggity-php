@@ -2,13 +2,16 @@
 let inputField = document.getElementById("editor-field");
 let preview = document.querySelector("#editor-preview");
 let previewFull = document.querySelector("#editor-preview-full");
+let articleTitleHtml = document.querySelector("#article-title");
 
 function updatePreview() {
 	let parser = new MarkdownParser(inputField.value);
 	let html = parser.parse();
-	preview.innerHTML = html;
-	previewFull.innerHTML = html;
+	let inner = `<h1 class="article-title">${title}<h1>${html}`;
+	preview.innerHTML = inner;
+	previewFull.innerHTML = inner;
 }
+
 inputField.addEventListener('input', updatePreview) 
 
 //Autosave
@@ -107,7 +110,9 @@ function updateArticleMetadata() {
 		if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
 			const json = JSON.parse(xhr.response);
 			if(json.result === 'success') {
-				// TODO: Success
+				articleTitleHtml.innerHTML = formData.get("title");
+				title = formData.get("title");
+				updatePreview();
 			}
 		}
 	};
