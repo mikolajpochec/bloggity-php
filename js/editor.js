@@ -7,7 +7,7 @@ let articleTitleHtml = document.querySelector("#article-title");
 function updatePreview() {
 	let parser = new MarkdownParser(inputField.value);
 	let html = parser.parse();
-	let inner = `<h1 class="article-title">${title}<h1>${html}`;
+	let inner = `<h1 class="article-title">${title}</h1>${html}`;
 	preview.innerHTML = inner;
 	previewFull.innerHTML = inner;
 }

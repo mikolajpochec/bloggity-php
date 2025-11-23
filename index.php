@@ -16,7 +16,6 @@ if(isset($_GET["article_id"])) {
 	if($response["result"] == "success") {
 		if($response["data"]["status"] == "public") {
 			echo "<div class='full-vertical-center'><article>";
-			echo '<h1 class="article-title">' . $response["data"]["title"] . '</h1>';
 			echo $response["data"]["html"];
 			echo "</article></div>";
 		}
