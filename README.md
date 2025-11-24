@@ -17,3 +17,7 @@ There are a few simple concepts, that are employed to build the experience descr
 - **Cheap to maintain**: PHP is supported on every major hosting and it's proportionaly cheaper to host than other technologies. Also, thanks to the meta-web feature, domains no longer matter — even to the point of ability to use free domain.
 - **Auto-generated SEO**: If Creator aims to merge traditional methods of gaining audience with a meta-web feature, Bloggity will generate sitemaps and necessary files to view posts and articles in feeds.
 - **Extensibility**: Future plans include custom layouts and components to build upon existing framework.
+
+## Contributing
+
+Everyone is welcome to help on the project! Start discussion, make a commit or contact me directly: mikolaj.pochec.dev@proton.me
