@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
-
-:root {
-	--header-font-family: "DM Serif Display", serif;
+:root { --header-font-family: "DM Serif Display", serif;
 	--regular-font-family: "Inter", sans-serif;
 	--monospace-font-family: "JetBrains Mono", monospace;
 	--article-max-width: 40rem;
@@ -192,7 +190,6 @@ article code {
 }
 
 .nav {
-	position: sticky;
 	display: flex;
 	background-color: var(--foreground);
 	flex-direction: row;
@@ -218,9 +215,19 @@ article code {
 	align-items: center;
 }
 
+.scrollable-horizontal {
+	overflow-x: scroll;
+}
+
 /* === END LAYOUTS === */
 
 /* === BEGIN HELPER STYLES === */
+
+.no-highlight, .no-highlight:link, .no-highlight:visited, 
+.no-highlight:hover, .no-highlight:active {
+	text-decoration: none;
+	color: var(--text);
+}
 
 body {
 	color: var(--text);
@@ -390,5 +397,4 @@ a, a:link, a:visited, a:active {
 .warning-text {
 	color: var(--invalid-primary);
 }
-
 /* === END COMMON UI ELEMENTS === */

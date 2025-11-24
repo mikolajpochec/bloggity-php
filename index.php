@@ -6,10 +6,21 @@
 		<link rel="stylesheet" href="/css/global.css">
 	</head>
 	<body>
+<?php include_once $_SERVER["DOCUMENT_ROOT"] . "/lib/common/config.php"; ?>
+<div class="full-vertical-center">
+	<a class="no-highlight" href="/"><h1><?php echo $config->get("metadata", "blog_name");?></h1></a>
+	<div class="nav scrollable-horizontal">
+		<?php
+			include_once $_SERVER["DOCUMENT_ROOT"] . "/lib/db/get_categories.php";
+			$categories = get_categories();
+			foreach($categories as $category) {
+				echo "<a href=\"/?category_id=" . $category["category_id"] . "\">"
+				   	. $category["category_name"] . "</a>";
+			}
+		?>
+	</div>
+</div>
 <?php
-include_once $_SERVER["DOCUMENT_ROOT"] . "/lib/common/config.php";
-echo $config->get("metadata", "blog_name");
-
 if(isset($_GET["article_id"])) {
 	include_once $_SERVER["DOCUMENT_ROOT"] . "/lib/db/get_article.php";
 	$response = get_article($_GET["article_id"]);
