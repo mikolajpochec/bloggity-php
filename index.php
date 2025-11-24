@@ -1,11 +1,11 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="/css/global.css">
-	</head>
-	<body>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="/css/global.css">
+</head>
+<body>
 <?php include_once $_SERVER["DOCUMENT_ROOT"] . "/lib/common/config.php"; ?>
 <div class="full-vertical-center">
 	<a class="no-highlight" href="/"><h1><?php echo $config->get("metadata", "blog_name");?></h1></a>
@@ -20,8 +20,37 @@
 		?>
 	</div>
 </div>
+<div class="full-vertical-center">
+	<div class="article-wide vertical-form">
 <?php
-if(isset($_GET["article_id"])) {
+if(isset($_GET["category_id"])) {
+	include_once $_SERVER["DOCUMENT_ROOT"] . "/lib/db/search_articles.php";
+	include_once $_SERVER["DOCUMENT_ROOT"] . "/lib/db/get_category_name.php";
+	$articles = search_articles(category_id: $_GET["category_id"], status: "public");
+	$category_name = get_category_name($_GET["category_id"]);
+	echo "<p>Articles from category <b>" . $category_name . "</b></p>";
+	foreach($articles["data"] as $article) {
+		#echo "<a class=\"no-highlight\" href=\"/?article_id=" . $article["id"] . "\">";
+		echo "<div class=\"panel\">";
+		echo "<b>" . $article["title"] . "</b>";
+		echo "<div><i>" . "description (TODO)" . "</i></div>";
+		echo "<div class=\"scrollable-horizontal\">";
+		foreach(explode(",", $article["tags"]) as $tag) {
+			if(!empty(trim($tag))) {
+				echo "<a href=\"?by-tag=" . $tag . "\" class=\"chip no-highlight\">" . $tag . "</a>";
+			}
+		}
+		echo "</div>";
+		echo "<a href=\"/?article_id=" . $article["id"] . "\">Read more...</a>"; 
+		echo "</div>";
+		#echo "</a>";
+	}
+}
+?>
+	</div>
+</div>
+<?php
+if(isset($_GET["article_id"]) && !isset($_GET["category_id"])) {
 	include_once $_SERVER["DOCUMENT_ROOT"] . "/lib/db/get_article.php";
 	$response = get_article($_GET["article_id"]);
 	if($response["result"] == "success") {
@@ -39,5 +68,5 @@ if(isset($_GET["article_id"])) {
 	}
 }
 ?>
-	</body>
+</body>
 </html>

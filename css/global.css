@@ -216,12 +216,21 @@ article code {
 }
 
 .scrollable-horizontal {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
 	overflow-x: scroll;
+	align-items: center;
 }
 
 /* === END LAYOUTS === */
 
 /* === BEGIN HELPER STYLES === */
+
+.article-wide {
+	max-width: var(--article-max-width) !important;
+	width: 100%;
+}
 
 .no-highlight, .no-highlight:link, .no-highlight:visited, 
 .no-highlight:hover, .no-highlight:active {
@@ -259,6 +268,18 @@ body {
 /* === END HELPER STYLES === */
 
 /* === BEGIN COMMON UI ELEMENTS === */
+
+.chip {
+	background-color: var(--accent);
+	height: fit-content;
+	padding: calc(var(--global-content-padding) / 2);
+	margin: calc(var(--global-content-padding) / 2);
+	border-radius: var(--global-border-radius);
+}
+
+.chip:first-child {
+	margin-left: 0;
+}
 
 textarea {
 	background-color: var(--background);
