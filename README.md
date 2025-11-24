@@ -11,6 +11,8 @@ The Bloggity Project tries to solve that problem, allowing everybody to contribu
 
 There are a few simple concepts, that are employed to build the experience described above.
 - **References**: Bloggity is planned to be release with a concept of *meta-web* built in. Every blog Creator will be able to invite other Creators to referral program through the standarized and integrated protocol, which will ensure, that referrer is also referred by the other side.
+<img width="1505" height="538" alt="meta-web" src="https://github.com/user-attachments/assets/1174d91e-574c-4eea-9150-2cd8ea982dc9" />
+
 - **Auto-configuration tool**: There is a planned tool, that will make the configuration of blog  as easy, as creating an account on a social media platform.
 - **Cheap to maintain**: PHP is supported on every major hosting and it's proportionaly cheaper to host than other technologies. Also, thanks to the meta-web feature, domains no longer matter — even to the point of ability to use free domain.
 - **Auto-generated SEO**: If Creator aims to merge traditional methods of gaining audience with a meta-web feature, Bloggity will generate sitemaps and necessary files to view posts and articles in feeds.
