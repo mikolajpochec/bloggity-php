@@ -10,10 +10,10 @@
 	<?php include './lib/common/head.php'; ?>
 	<link rel="stylesheet" href="/css/panel.css">
 </head>
-
+<?php include_once $_SERVER["DOCUMENT_ROOT"] . "/lib/common/config.php"; ?>
 <div class="sidebar-layout">
 	<div class="sidebar">
-		<h1>Blog name</h1>
+		<h1><?php echo $config->get("metadata", "blog_name");?></h1>
 <?php
 $menu = array(
 	array(
