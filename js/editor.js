@@ -91,6 +91,7 @@ function updateArticleMetadata() {
 	let addAnd = false;
 	if(formData.get("status") == "public") {
 		formData.set("md_content_latest_published", inputField.value);
+		htmlContent = htmlContent.replace(/\&/g, '%26');
 		formData.set("html", htmlContent);
 	}
 	console.log(formData);
