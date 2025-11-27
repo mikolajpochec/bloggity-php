@@ -3,11 +3,12 @@ let inputField = document.getElementById("editor-field");
 let preview = document.querySelector("#editor-preview");
 let previewFull = document.querySelector("#editor-preview-full");
 let articleTitleHtml = document.querySelector("#article-title");
+var htmlContent = "";
 
 function updatePreview() {
 	let parser = new MarkdownParser(inputField.value);
-	let html = parser.parse();
-	let inner = `<h1 class="article-title">${title}</h1>${html}`;
+	htmlContent = parser.parse();
+	let inner = `<h1 class="article-title">${title}</h1>${htmlContent}`;
 	preview.innerHTML = inner;
 	previewFull.innerHTML = inner;
 }
@@ -89,9 +90,8 @@ function updateArticleMetadata() {
 	let payload = "";
 	let addAnd = false;
 	if(formData.get("status") == "public") {
-		let htmlContent = document.querySelector("#editor-preview");
-		formData.set("html", htmlContent.innerHTML);
 		formData.set("md_content_latest_published", inputField.value);
+		formData.set("html", htmlContent);
 	}
 	console.log(formData);
 	for (const [key, value] of formData) {
