@@ -74,8 +74,42 @@ unset($result);
 					<input name="id" style="display:none" value="<?php echo $article['id'] ?>"></input>
 					<b>Title</b>
 					<input type="text" name="title" value="<?php echo $article['title'] ?>"placeholder="Enter title...">
+					<b>Description</b>
+					<input type="text" name="description" value="<?php echo $article['description'] ?>" placeholder="Short description...">
 					<b>Tags</b>
 					<input type="text" name="tags" value="<?php echo $article['tags'] ?>"placeholder="history, science...">
+					<b>Title image</b>
+					<div class="img-select-box">
+<?php
+$img_files = scandir($_SERVER["DOCUMENT_ROOT"] . "/media");
+$output = "";
+if(count($img_files) <= 2) {
+	echo "<p>There are no pictures uploaded. " . 
+		"Go to <a target=\"_blank\" rel=\"noopener " . 
+		"noreferrer\" href=\"/panel.php?item=media\">media</a> page.</p>";
+}
+foreach($img_files as $filename) {
+	if(is_dir($_SERVER["DOCUMENT_ROOT"] . "/media/" . $filename)) {
+		continue;
+	}
+	$checked = "";
+	$is_chosen = "/media/" . $filename == $article["title_img_url"];
+	if($is_chosen) {
+		$checked = "checked";
+	}
+	$append = "";
+	$append = '<input id="' . $filename . '" type="radio" name="title_img_url" value="/media/' .
+	   	$filename . '" ' . $checked . '/>';
+	$append = $append . '<label for="' . $filename . '"' . ' style="background: url(\'/media/' . $filename  . '\'); background-size: cover;">' . $filename . '</label>';
+	if($is_chosen) {
+		$output = $append . $output;
+	} else {
+		$output = $output . $append;
+	}
+}
+echo $output;
+?>
+					</div>
 					<b>Category</b>
 					<select name="category_id">
 						<?php 

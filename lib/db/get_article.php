@@ -9,9 +9,7 @@ function get_article($id) {
 		return $result;
 	}
     $stmt = $conn->prepare("
-        SELECT id, title, md_content, tags, category_id, status, html
-        FROM articles
-        WHERE id = ?
+        SELECT * FROM articles WHERE id = ?
     ");
     $stmt->bind_param("i", $id); 
     $stmt->execute();

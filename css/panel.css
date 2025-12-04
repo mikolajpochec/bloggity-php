@@ -39,17 +39,16 @@
 	height: fit-content;
 }
 
-.articles-list-preview > a {
-	cursor: pointer;
+.articles-list-preview > div {
 	margin-top: var(--global-content-padding);
 }
 
-.articles-list-preview > a > * {
+.articles-list-preview > div > * {
 	color: var(--text) !important;
 	margin: 0;
 }
 
-.articles-list-preview > a .category {
+.articles-list-preview > div .category {
 	color: var(--primary);
 }
 

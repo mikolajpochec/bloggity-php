@@ -99,6 +99,34 @@ form button {
 	width: 100%;
 }
 
+form .img-select-box {
+	display: flex;
+	width: 100%;
+	flex-direction: row;
+	gap: var(--global-content-padding);
+	overflow-x: scroll;
+	margin: var(--global-content-padding) 0;
+}
+
+form .img-select-box input[type="radio"] {
+	display: none;
+}
+
+form .img-select-box input[type="radio"] + label {
+	display: block;
+	height: 12rem;
+	aspect-ratio: 4/3;
+	color: transparent;
+	cursor: pointer;
+	border-radius: var(--global-border-radius);
+	box-sizing: border-box;
+	transition: all 0.1s ease-in-out;
+}
+
+form .img-select-box input[type="radio"]:checked + label {
+	border: 0.15rem solid var(--accent);
+}
+
 /*
  * This is obviously double the size of the max
  * article width plus some size. 

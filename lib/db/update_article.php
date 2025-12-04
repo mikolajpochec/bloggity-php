@@ -4,8 +4,10 @@ function update_article($id, $values_array) {
 	$env = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . "/.env");
 	$conn = makeConnection();
 	$conn->query("USE " . $env["DB_NAME"]);
+
 	$stmt = $conn->prepare("
-		SELECT id, title, md_content, md_content_latest_published, tags, category_id, status, html
+		SELECT id, title, md_content, md_content_latest_published, tags, category_id, 
+		status, html, original_time, last_update_time
 		FROM articles
 		WHERE id = ?
 	");
@@ -18,14 +20,24 @@ function update_article($id, $values_array) {
 			$article[$key] = $value;
 		}
 	}
+ 	if($article["status"] == "public") {
+		$time = date("Y-m-d H:i:s");
+		$article["last_update_time"] = $time;
+		if(is_null($article["original_time"])) {
+			$article["original_time"] = $time;
+		}
+	}
 	$stmt = $conn->prepare("
 		UPDATE articles
 		SET title = ?, md_content = ?, tags = ?, category_id = ?, status = ?, html = ?,
-		md_content_latest_published = ? WHERE id = ?
+		md_content_latest_published = ?, description = ?, title_img_url = ?,
+		original_time = ?, last_update_time = ? WHERE id = ?
 	");
-	$stmt->bind_param("sssisssi", $article['title'], $article['md_content'],
+	$stmt->bind_param("sssisssssssi", $article['title'], $article['md_content'],
 		$article['tags'], $article['category_id'], $article['status'],
-	   	$article['html'], $article['md_content_latest_published'], $article['id']); 
+		$article['html'], $article['md_content_latest_published'], $article['description'],
+		$article['title_img_url'], $article["original_time"], $article["last_update_time"], 
+		$article['id']); 
 	if($stmt->execute()) {
 		return array("result" => "success");
 	} else {

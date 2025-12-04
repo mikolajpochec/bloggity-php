@@ -28,7 +28,7 @@ function fetchArticlesAsync() {
 					<a class="elevated panel" href="/editor.php?id=${e.id}">
 						<b>${e.title}</b>
 						<p><i>${content}</i></p>
-						<p><i class="category">${e.category_id == null ? "No category" : e.category_id}</i></p>
+						<p><i class="category">${e.category_id == null ? "No category" : e.category_name}</i></p>
 					</a>
 					`;
 				});

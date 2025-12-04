@@ -21,8 +21,27 @@
 			</div>
 		</div>
 		<div id="articles-preview-container" class="scrollable-list articles-list-preview">
+<?php
+	include_once $_SERVER["DOCUMENT_ROOT"] . "/lib/db/search_articles.php";
+	include_once $_SERVER["DOCUMENT_ROOT"] . "/lib/db/get_category_name.php";
+	$articles = search_articles(status: "public");
+	foreach($articles["data"] as $article) {
+		echo '<div class="elevated panel">';
+		echo '<b>' . $article["title"] . '</b>';
+		echo '<p><i>' . $article["description"] . '</i></p>';
+		if(!is_null($article["category_id"])) {
+			$category_name = get_category_name($article["category_id"]);
+			echo '<p><i class="category">' . $category_name  . '</i></p>';
+		}
+		echo '<div class="scrollable-horizontal" style="gap: var(--global-content-padding);">';
+		echo '<a href="/editor.php?id=' . $article["id"] . '">Edit</a>';
+		echo '<a href="/?article_id=' . $article["id"] . '">View</a>';
+		echo '<a>Delete</a>';
+		echo '</div>';
+		echo '</div>';
+	}
+?>
 		</div>
 		<a href="/editor.php">New article</a>
 	</form>
 </div>
-<script src="/js/articles.js" type="text/javascript"></script>

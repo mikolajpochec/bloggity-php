@@ -260,15 +260,21 @@ body {
 }
 
 .gaps {
-	gap: 1rem;
+	gap: var(--global-content-padding);
 	overflow-x: auto;
 	overflow-y: hidden;
-	padding: 0.5rem 0;
 }
 
 /* === END HELPER STYLES === */
 
 /* === BEGIN COMMON UI ELEMENTS === */
+
+.date-text {
+	display: flex;
+	color: var(--secondary);
+	gap: var(--global-content-padding);
+	margin: var(--global-content-padding);
+}
 
 .chip {
 	background-color: var(--accent);

@@ -33,7 +33,7 @@ if(isset($_GET["category_id"])) {
 		#echo "<a class=\"no-highlight\" href=\"/?article_id=" . $article["id"] . "\">";
 		echo "<div class=\"panel\">";
 		echo "<b>" . $article["title"] . "</b>";
-		echo "<div><i>" . "description (TODO)" . "</i></div>";
+		echo "<div><i>" . $article["description"] . "</i></div>";
 		echo "<div class=\"scrollable-horizontal\">";
 		foreach(explode(",", $article["tags"]) as $tag) {
 			if(!empty(trim($tag))) {
@@ -53,11 +53,19 @@ if(isset($_GET["category_id"])) {
 if(isset($_GET["article_id"]) && !isset($_GET["category_id"])) {
 	include_once $_SERVER["DOCUMENT_ROOT"] . "/lib/db/get_article.php";
 	$response = get_article($_GET["article_id"]);
+	$article = $response["data"];
 	if($response["result"] == "success") {
-		if($response["data"]["status"] == "public") {
-			echo "<div class='full-vertical-center'><article>";
-			echo $response["data"]["html"];
-			echo "</article></div>";
+		if($article["status"] == "public") {
+			echo "<div class='full-vertical-center'>";
+			echo "<article>";
+			echo $article["html"];
+			echo "</article>";
+			echo "<div class=\"date-text\">";
+			echo "<i>Published: " . $article["original_time"] . "</i>";
+			if($article["original_time"] != $article["last_update_time"]) {
+				echo "<i>Updated: " . $article["last_update_time"] . "</i>";
+			}
+			echo "</div></div>";
 		}
 		else {
 			echo "This article is hidden."; 
