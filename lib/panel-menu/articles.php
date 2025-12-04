@@ -36,7 +36,7 @@
 		echo '<div class="scrollable-horizontal" style="gap: var(--global-content-padding);">';
 		echo '<a href="/editor.php?id=' . $article["id"] . '">Edit</a>';
 		echo '<a href="/?article_id=' . $article["id"] . '">View</a>';
-		echo '<a>Delete</a>';
+		echo '<a href="/api/article/delete.php?id=' . $article["id"] . '">Delete</a>';
 		echo '</div>';
 		echo '</div>';
 	}

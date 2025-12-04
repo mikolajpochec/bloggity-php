@@ -58,6 +58,10 @@ if(isset($_GET["article_id"]) && !isset($_GET["category_id"])) {
 		if($article["status"] == "public") {
 			echo "<div class='full-vertical-center'>";
 			echo "<article>";
+			echo "<h1 class=\"article-title\">" . $article["title"] . '</h1>';
+			if(!is_null($article["title_img_url"])) {
+				echo "<img class=\"article-title-img\" src=\"" . $article["title_img_url"] . "\"/>";
+			}
 			echo $article["html"];
 			echo "</article>";
 			echo "<div class=\"date-text\">";
@@ -72,7 +76,7 @@ if(isset($_GET["article_id"]) && !isset($_GET["category_id"])) {
 		}
 	}
 	else {
-			echo "Cannot retrieve this article."; 
+		echo "Cannot retrieve this article."; 
 	}
 }
 ?>

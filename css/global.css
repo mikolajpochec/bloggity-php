@@ -1,11 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
-:root { --header-font-family: "DM Serif Display", serif;
+:root {
+	--header-font-family: "DM Serif Display", serif;
 	--regular-font-family: "Inter", sans-serif;
 	--monospace-font-family: "JetBrains Mono", monospace;
-	--article-max-width: 40rem;
 	--elevated-shadow: 0px 8px 16px 0px var(--shadow);
 	--global-content-padding: 0.75rem;
 	--global-border-radius: 0.5rem;
+	--article-max-width: 40rem;
+	--article-img-heigth: 22rem;
 }
 
 @media (prefers-color-scheme: light) {
@@ -127,6 +129,15 @@ article code {
 	max-width: 100%;
 	padding: 1rem;
 	padding-left: 2rem !important;
+}
+
+.article-title-img {
+	width: 100%;
+	height: var(--article-img-heigth);
+	border-radius: var(--global-border-radius);
+	object-fit: cover;
+	display: flex;
+	justify-content: center;
 }
 
 /* === END ARTICLE DEFAULT STYLE === */
