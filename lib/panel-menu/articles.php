@@ -24,7 +24,7 @@
 <?php
 	include_once $_SERVER["DOCUMENT_ROOT"] . "/lib/db/search_articles.php";
 	include_once $_SERVER["DOCUMENT_ROOT"] . "/lib/db/get_category_name.php";
-	$articles = search_articles(status: "public");
+	$articles = search_articles();
 	foreach($articles["data"] as $article) {
 		echo '<div class="elevated panel">';
 		echo '<b>' . $article["title"] . '</b>';
