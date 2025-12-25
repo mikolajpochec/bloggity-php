@@ -30,7 +30,6 @@ if(isset($_GET["category_id"])) {
 	$category_name = get_category_name($_GET["category_id"]);
 	echo "<p>Articles from category <b>" . $category_name . "</b></p>";
 	foreach($articles["data"] as $article) {
-		#echo "<a class=\"no-highlight\" href=\"/?article_id=" . $article["id"] . "\">";
 		echo "<div class=\"panel\">";
 		echo "<b>" . $article["title"] . "</b>";
 		echo "<div><i>" . $article["description"] . "</i></div>";
@@ -43,7 +42,6 @@ if(isset($_GET["category_id"])) {
 		echo "</div>";
 		echo "<a href=\"/?article_id=" . $article["id"] . "\">Read more...</a>"; 
 		echo "</div>";
-		#echo "</a>";
 	}
 }
 ?>
@@ -62,14 +60,15 @@ if(isset($_GET["article_id"]) && !isset($_GET["category_id"])) {
 			if(!is_null($article["title_img_url"])) {
 				echo "<img class=\"article-title-img\" src=\"" . $article["title_img_url"] . "\"/>";
 			}
-			echo $article["html"];
-			echo "</article>";
 			echo "<div class=\"date-text\">";
 			echo "<i>Published: " . $article["original_time"] . "</i>";
 			if($article["original_time"] != $article["last_update_time"]) {
 				echo "<i>Updated: " . $article["last_update_time"] . "</i>";
 			}
-			echo "</div></div>";
+			echo "</div>";
+			echo $article["html"];
+			echo "</article>";
+			echo "</div>";
 		}
 		else {
 			echo "This article is hidden."; 
