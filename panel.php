@@ -13,7 +13,7 @@
 <?php include_once $_SERVER["DOCUMENT_ROOT"] . "/lib/common/config.php"; ?>
 <div class="sidebar-layout">
 	<div class="sidebar">
-		<h1><?php echo $config->get("metadata", "blog_name");?></h1>
+		<h1><?php echo (new Config())->get("metadata", "blog_name");?></h1>
 <?php
 $menu = array(
 	array(

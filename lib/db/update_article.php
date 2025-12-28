@@ -39,6 +39,12 @@ function update_article($id, $values_array) {
 		$article['title_img_url'], $article["original_time"], $article["last_update_time"], 
 		$article['id']); 
 	if($stmt->execute()) {
+		if($article["status"] == "public") {
+			include_once $_SERVER["DOCUMENT_ROOT"] . "/lib/seo/generate_sitemap.php";
+			include_once $_SERVER["DOCUMENT_ROOT"] . "/lib/seo/generate_robots.php";
+			generate_sitemap();
+			generate_robots();
+		}
 		return array("result" => "success");
 	} else {
 		return array("result" => "error");

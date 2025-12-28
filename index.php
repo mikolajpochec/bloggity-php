@@ -8,7 +8,7 @@
 <body>
 <?php include_once $_SERVER["DOCUMENT_ROOT"] . "/lib/common/config.php"; ?>
 <div class="full-vertical-center">
-	<a class="no-highlight" href="/"><h1><?php echo $config->get("metadata", "blog_name");?></h1></a>
+	<a class="no-highlight" href="/"><h1><?php echo (new Config())->get("metadata", "blog_name");?></h1></a>
 	<div class="nav scrollable-horizontal">
 		<?php
 			include_once $_SERVER["DOCUMENT_ROOT"] . "/lib/db/get_categories.php";

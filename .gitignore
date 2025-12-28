@@ -6,3 +6,5 @@ auth/*
 
 # Other
 media/*
+sitemap.xml
+robots.txt

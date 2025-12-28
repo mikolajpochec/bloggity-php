@@ -2,6 +2,10 @@
 	"metadata": {
 		"blog_name": "Blog Name"
 	},
+	"web": {
+		"domain": "localhost:8080",
+		"protocol": "http"
+	},
 	"development":  {
 		"under_construction_flag": false
 	}
