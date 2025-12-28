@@ -5,7 +5,9 @@ function generate_robots_internal($protocol, $domain) {
 	$robots_path = $_SERVER["DOCUMENT_ROOT"] . "/robots.txt";
 	$contents = <<<EOF
 User-Agent: *
-Disallow:
+Disallow: /panel.php
+Disallow: /editor.php
+Disallow: /login.php
 
 Sitemap: $sitemap_url
 EOF;
