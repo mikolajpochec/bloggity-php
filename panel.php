@@ -27,7 +27,7 @@ $menu = array(
 	array(
 		"category" => "Appearance",
 		"items" => array(
-			array("id" => "styles", "text" => "🎨 styles"),
+			array("id" => "style", "text" => "🎨 style"),
 			array("id" => "layout", "text" => "🔨 layout"),
 		)
 	),

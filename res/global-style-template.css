@@ -1,50 +1,52 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
-:root{
---header-font-family: "DM Serif Display", serif;
---regular-font-family: "Inter", sans-serif;
---monospace-font-family: "JetBrains Mono", monospace;
---elevated-shadow: 0px 8px 16px 0px var(--shadow);
---global-content-padding: 0.75rem;
---global-border-radius: 0.5rem;
---article-max-width: 40rem;
---article-img-heigth: 22rem;
+:root {
+	--header-font-family: "DM Serif Display", serif;
+	--regular-font-family: "Inter", sans-serif;
+	--monospace-font-family: "JetBrains Mono", monospace;
+	--elevated-shadow: 0px 8px 16px 0px var(--shadow);
+	--global-content-padding: 0.75rem;
+	--global-border-radius: 0.5rem;
+	--article-max-width: 40rem;
+	--article-img-heigth: 22rem;
 }
 
 @media (prefers-color-scheme: light) {
-:root {
---text: #000000;
---placeholder: #8d877e;
---text-on-primary: #ffffff;
---background: #f8f6f0;
---foreground: #ffffff;
---primary: #4c433b;
---secondary: #877f72;
---accent: #a6532d;
---shadow: #36332d;
---valid-primary: #e8f5ef;
---valid-secondary: #3f765a;
---invalid-primary: #fae8e6;
---invalid-secondary: #b2504d;
---not-safe: #a65300;
-}}
+    :root {
+        --text: #36332d;
+        --placeholder: #8d877e;
+        --text-on-primary: #ffffff;
+        --background: #f8f6f0;
+        --foreground: #ffffff;
+        --primary: #4c433b;
+        --secondary: #877f72;
+        --accent: #a6532d;
+        --shadow: rgba(54, 51, 45, 0.1);
+        --valid-primary: #e8f5ef;
+        --valid-secondary: #3f765a;
+        --invalid-primary: #fae8e6;
+        --invalid-secondary: #b2504d;
+        --not-safe: #a65300;
+    }
+}
 
 @media (prefers-color-scheme: dark) {
-:root {
---text: #dcd9d4;
---placeholder: #7c766f;
---text-on-primary: #111111;
---background: #000000;
---foreground: #1e1e1d;
---primary: #6b6255;
---secondary: #45413a;
---accent: #c26e47;
---shadow: #000000;
---valid-primary: #3f765a;
---valid-secondary: #d7ebe1;
---invalid-primary: #a14440;
---invalid-secondary: #f3d1cf;
---not-safe: #ad5500;
-}}
+    :root {
+        --text: #dcd9d4;
+        --placeholder: #7c766f;
+        --text-on-primary: #111111;
+        --background: #121211;
+        --foreground: #1e1e1d;
+        --primary: #6b6255;
+        --secondary: #45413a;
+        --accent: #c26e47;
+        --shadow: rgba(0, 0, 0, 0.5);
+        --valid-primary: #3f765a;
+        --valid-secondary: #d7ebe1;
+        --invalid-primary: #a14440;
+        --invalid-secondary: #f3d1cf;
+        --not-safe: #ad5500;
+    }
+}
 
 /* === BEGIN ARTICLE DEFAULT STYLE === */
 

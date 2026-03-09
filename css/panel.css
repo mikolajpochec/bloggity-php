@@ -162,3 +162,11 @@
 button {
 	margin: var(--global-content-padding) 0;
 }
+
+.wide-text-action {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: var(--global-content-padding);
+}
